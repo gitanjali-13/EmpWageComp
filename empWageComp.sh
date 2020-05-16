@@ -1,5 +1,5 @@
 #!/bin/bash -x
-echo "Welcome msg"
+echo "Welcome"
 ispresent=1;
 randomCheck=$((RANDOM%2));
 if [ $ispresent -eq $randomCheck ]
