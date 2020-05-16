@@ -1,13 +1,21 @@
 #!/bin/bash -x
 echo "Welcome"
-ispresent=1;
-randomCheck=$((RANDOM%2));
-if [ $ispresent -eq $randomCheck ]
+empCheck=$((RANDOM % 3))
+isPartTime=1
+isFullTime=2
+salaryPerHr=20
+
+if [ $isPartTime -eq $empCheck ]
 then
-      salaryperHour=20;
-      workingHourperday=8;
-      salary=$(($salaryperHour * $workingHourperday))
+	echo "Present for part time"
+	workHrs=4
+elif [ $isFullTime -eq $empCheck ]
+then
+	echo "Present for Full Time"
+	workHrs=8
 else
-     salary=0;
+	echo "Absent"
 fi
-echo $salary;
+
+salary=$((workHrs * salaryPerHr))
+echo "Salary: "$salary
