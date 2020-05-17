@@ -1,4 +1,6 @@
 #!/bin/bash -x
+
+declare -A dailyWage
 echo "**Welcome**"
 IS_PART_TIME=1;
 IS_FULL_TIME=2;
@@ -43,3 +45,5 @@ done
 totalSalary=$((totalEmpHr*$EMP_RATE_PER_HR));
 echo "Total Employee Hours: " $totalEmpHr;
 echo "Total Employee salary: "$totalSalary;
+echo ${dailyWage[@]}
+echo ${!dailyWage[@]}
