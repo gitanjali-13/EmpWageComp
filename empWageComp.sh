@@ -1,13 +1,35 @@
 #!/bin/bash -x
 echo "Welcome"
-ispresent=1;
-randomCheck=$((RANDOM%2));
-if [ $ispresent -eq $randomCheck ]
-then
-      salaryperHour=20;
-      workingHourperday=8;
-      salary=$(($salaryperHour * $workingHourperday))
-else
-     salary=0;
-fi
-echo $salary;
+presenty=$((RANDOM % 3))
+isPartTime=1
+isFullTime=2
+salaryPerHr=20
+totalSalary=0
+workDays=20
+totalHrs=0
+days=0
+
+while [ $totalHrs -le 100 -a $days -le 20 ]
+do
+	presenty=$((RANDOM % 3))
+	case $presenty in
+		$isPartTime)
+			echo "Employee Present for part time"
+			workHrs=4
+			$((days++))
+			;;
+		$isFullTime)
+			echo "Employee Present for Full Time"
+			workHrs=8
+			$((days++))
+			;;
+		*)
+			echo "Absent"
+			;;
+	esac
+	totalHrs=$(($totalHrs + $workHrs))
+	salary=$((workHrs * salaryPerHr))
+	totalSalary=$(($totalSalary + $salary))
+done
+echo "Total Hours: "$totalHrs
+echo "Total Salary: "$totalSalary
